@@ -1,0 +1,60 @@
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+--
+-- Host: localhost    Database: testdb
+-- ------------------------------------------------------
+-- Server version	8.0.35-0ubuntu0.23.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users_user_group_mappings`
+--
+
+DROP TABLE IF EXISTS `users_user_group_mappings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users_user_group_mappings` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(3) DEFAULT NULL,
+  `updated_at` datetime(3) DEFAULT NULL,
+  `deleted_at` datetime(3) DEFAULT NULL,
+  `user_id` bigint unsigned DEFAULT NULL,
+  `user_group_id` bigint unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_users_user_group_mappings_deleted_at` (`deleted_at`),
+  KEY `fk_users_uug_map` (`user_id`),
+  KEY `fk_user_groups_uug_map` (`user_group_id`),
+  CONSTRAINT `fk_user_groups_uug_map` FOREIGN KEY (`user_group_id`) REFERENCES `user_groups` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_users_uug_map` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_user_group_mappings`
+--
+
+LOCK TABLES `users_user_group_mappings` WRITE;
+/*!40000 ALTER TABLE `users_user_group_mappings` DISABLE KEYS */;
+INSERT INTO `users_user_group_mappings` VALUES (3,'2023-09-22 12:03:17.389','2023-09-22 12:03:17.389',NULL,3,2),(4,'2023-09-22 12:03:38.349','2023-11-22 03:07:36.429',NULL,4,8),(5,'2023-09-22 12:04:01.288','2023-09-22 12:04:01.288',NULL,5,3),(6,'2023-09-22 12:04:18.127','2023-09-22 12:04:18.127',NULL,6,3),(7,'2023-09-22 12:04:34.543','2023-09-22 12:04:34.543',NULL,7,3),(8,'2023-09-22 12:05:05.420','2023-09-22 12:05:05.420',NULL,8,3),(9,'2023-09-22 12:06:27.166','2023-09-22 12:06:27.166',NULL,9,3),(10,'2023-09-22 12:06:55.075','2023-09-22 12:06:55.075',NULL,10,3),(11,'2023-09-26 18:41:56.011','2023-09-26 18:41:56.011',NULL,11,3),(12,'2023-09-26 18:42:07.964','2023-09-26 18:42:07.964',NULL,12,3),(13,'2023-09-26 18:43:51.891','2023-09-26 18:43:51.891',NULL,13,3),(14,'2023-09-26 18:44:03.467','2023-09-26 18:44:03.467',NULL,14,3),(19,'2023-10-09 12:43:48.951','2023-10-10 13:52:44.505',NULL,19,3),(20,'2023-10-09 12:46:58.449','2023-10-09 12:46:58.449',NULL,20,3),(21,'2023-10-20 17:24:59.301','2023-10-20 17:24:59.301',NULL,21,2),(22,'2023-10-20 17:49:00.629','2023-10-20 17:49:00.629',NULL,22,2),(25,'2023-10-20 19:20:42.371','2023-10-20 19:20:42.371',NULL,25,3),(26,'2023-10-26 14:01:05.325','2023-10-26 14:01:05.325',NULL,26,3),(29,'2023-11-23 18:01:43.125','2023-11-23 18:01:43.125',NULL,29,2),(30,'2023-12-20 21:17:25.036','2023-12-21 12:26:10.227',NULL,30,8);
+/*!40000 ALTER TABLE `users_user_group_mappings` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-12-28 14:04:31
